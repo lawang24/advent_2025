@@ -1,3 +1,3 @@
 | Command | Mean [ms] | Min [ms] | Max [ms] | Relative |
 |:---|---:|---:|---:|---:|
-| `./target/release/day1` | 1.7 ± 0.8 | 1.1 | 13.4 | 1.00 |
+| `./target/release/p2` | 63.0 ± 2.9 | 58.9 | 70.3 | 1.00 |
