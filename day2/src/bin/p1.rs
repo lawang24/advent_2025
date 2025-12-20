@@ -18,47 +18,62 @@ fn main() -> io::Result<()> {
     // case odd digits: the "doubled" number will x-1 digits long . smallest double is 999999
     // if x digits, first_half = 9999.. (x-1) times
 
-    let f = File::open("test.txt")?;
-    let reader = BufReader::new(f);
+    let f = File::open("input.txt")?;
+    let mut reader = BufReader::new(f);
 
-    for line in reader.lines() {
-        let line = line?;
+    let mut line = String::new();
+    reader.read_line(&mut line)?;
+
+    let inputs = line.trim().split(',');
+
+    let mut answer = 0;
+
+    for line in inputs {
         let (a, b) = line
             .split_once('-').unwrap();
+        answer += calculate(a, b);
     }
+
+    println!("{answer}");
 
     Ok(())
 }
 
-fn calculate(a:String, b:String) -> i32 {
+fn calculate(a:&str, b:&str) -> i64 {
 
     let a_len = a.len();
-    let mut lower = 0;
+    let lower:i64;
     
     // lower bound even
     if a_len % 2 == 0 {
         let (first, second) = a.split_at(a_len/2);
-        let n1 = first.parse::<i32>().unwrap();
-        let n2 = second.parse::<i32>().unwrap();
+        let n1 = first.parse::<i64>().unwrap();
+        let n2 = second.parse::<i64>().unwrap();
         lower = if n1 >= n2 {n1} else {n1+1};
     }
     else {
-        lower = 10_i32.pow(((a_len+1)/2) as u32);
+        lower = 10_i64.pow(((a_len)/2) as u32);
     }
 
     let b_len = b.len();
-    let mut upper:i32 = 0;
+    let upper:i64;
 
     if b_len%2 == 0 {
         let (first, second) = b.split_at(b_len/2);
-        let n1 = first.parse::<i32>().unwrap();
-        let n2 = second.parse::<i32>().unwrap();
-        upper = if n1 >= n2 {n1} else {n1+1};
+        let n1 = first.parse::<i64>().unwrap();
+        let n2 = second.parse::<i64>().unwrap();
+        upper = if n1 <= n2 {n1} else {n1-1};
+    }
+    else{
+        upper = 10_i64.pow((b_len/2) as u32) -1 ;
     }
 
-    
+    let mut total = 0;
 
+    for val in lower..upper+1 {
+        let new_num = format!{"{}{}", val, val}.parse::<i64>().unwrap();
+        total+=new_num;
+    }
 
-
-    return 0;
+    return total
 }
