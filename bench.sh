@@ -27,7 +27,7 @@ done
 # 6. Execute hyperfine
 # All binaries are passed at once to generate a single comparison table
 hyperfine \
-    -w 15 \
+    --warmup 15 \
     --export-markdown "$OUTPUT_FILE" \
     "${BINS[@]}"
 
