@@ -24,6 +24,8 @@ for bin in "${BINS[@]}"; do
     fi
 done
 
+cargo build --release
+
 # 6. Execute hyperfine
 # All binaries are passed at once to generate a single comparison table
 hyperfine \

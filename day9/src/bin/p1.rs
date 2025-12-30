@@ -1,4 +1,5 @@
 use std::fs;
+use std::cmp;
 
 struct Coord {
     row: i64,
@@ -17,14 +18,15 @@ fn main(){
     }
 
     let ncoords = coords.len();
-    let mut rectangles: Vec<i64> = Vec::new(); 
+    let mut champ = 0;
 
-    for i in 0..ncoords {
+     for i in 0..ncoords {
         for j in i+1..ncoords {
-            rectangles.push(((coords[i].row-coords[j].row).abs()+1) * ((coords[i].col-coords[j].col).abs()+1));
+            champ = cmp::max(champ, ((coords[i].row-coords[j].row).abs()+1) * ((coords[i].col-coords[j].col).abs()+1));
         }
     }
 
-    println!("{}", rectangles.iter().max().unwrap());
+
+    println!("{champ}");
 
 }
