@@ -11,9 +11,11 @@ Solutions for Advent of Code 2025 challenges, written in Rust with benchmarking 
 
 ### Setting Up a Day
 
-Create your solution files:
+1. Create your solution files:
    - `src/bin/p1.rs` for Part 1
    - `src/bin/p2.rs` for Part 2
+2. Add `/input.txt` file
+
 
 ### Running Benchmarks
 
@@ -58,14 +60,24 @@ The benchmarking script uses [hyperfine](https://github.com/sharkdp/hyperfine) t
 
 ### Benchmark Results
 
-```mermaid
-xychart-beta
-    title "Advent of Code 2025 - Benchmark Results"
-    x-axis "Day" [2, 4, 5, 6, 7, 8, 9, 10, 12]
-    y-axis "Time (ms)" 0 --> 70
-    bar "Part 1" [2.3, 1.3, 1.0, 1.2, 1.2, 15.1, 1.2, 17.6, 1.4]
-    bar "Part 2" [68.4, 2.6, 0.9, 1.1, 1.1, 15.2, 11.5, 9.3, 0]
-```
+
+| Day | P1 (ms) | P2 (ms) |
+| --: | ------: | ------: |
+|   1 |     1.4 |     1.6 |
+|   2 |     2.3 |    68.4 |
+|   3 |     1.3 |     1.5 |
+|   4 |     1.3 |     2.6 |
+|   5 |     1.0 |     0.9 |
+|   6 |     1.2 |     1.1 |
+|   7 |     1.2 |     1.1 |
+|   8 |    15.1 |    15.2 |
+|   9 |     1.2 |    11.5 |
+|  10 |    17.6 |     9.3 |
+|  11 |     1.4 |     1.5 |
+|  12 |     1.4 |       — |
+
+![Benchmark chart](/benchmark_chart.png)
+
 
 
 
