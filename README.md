@@ -60,6 +60,7 @@ The benchmarking script uses [hyperfine](https://github.com/sharkdp/hyperfine) t
 
 ### Benchmark Results
 
+![Benchmark chart](/benchmark_chart.png)
 
 | Day | P1 (ms) | P2 (ms) |
 | --: | ------: | ------: |
@@ -76,7 +77,6 @@ The benchmarking script uses [hyperfine](https://github.com/sharkdp/hyperfine) t
 |  11 |     1.4 |     1.5 |
 |  12 |     1.4 |       — |
 
-![Benchmark chart](/benchmark_chart.png)
 
 
 
