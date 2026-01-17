@@ -17,16 +17,25 @@ cargo build --release
 RELEASE_DIR="./target/release"
 OUTPUT_FILE="benchmarks.md"
 
-# List of binaries to benchmark
-BINS=( "$RELEASE_DIR/p1" "$RELEASE_DIR/p2" )
-
-# Verify that all binaries exist and are executable before benchmarking
-for bin in "${BINS[@]}"; do
-    if [ ! -x "$bin" ]; then
-        echo "Error: Binary $bin not found or not executable."
-        exit 1
+# Discover binaries from src/bin/*.rs files
+BINS=()
+for src in src/bin/*.rs; do
+    if [ -f "$src" ]; then
+        name=$(basename "$src" .rs)
+        bin="$RELEASE_DIR/$name"
+        if [ -x "$bin" ]; then
+            BINS+=("$bin")
+        else
+            echo "Warning: Binary $bin not found or not executable, skipping."
+        fi
     fi
 done
+
+# Verify that at least one binary was found
+if [ ${#BINS[@]} -eq 0 ]; then
+    echo "Error: No binaries found in $RELEASE_DIR"
+    exit 1
+fi
 
 # Run hyperfine benchmark on all binaries
 # All binaries are passed at once to generate a single comparison table
