@@ -4,22 +4,16 @@ Solutions for Advent of Code 2025 challenges, written in Rust with benchmarking 
 
 ## 📋 Prerequisites
 
-- Rust toolchain (install from [rustup.rs](https://rustup.rs/))
+- Rust toolchain
 - [hyperfine](https://github.com/sharkdp/hyperfine) for benchmarking
 
 ## 🚀 Quick Start
 
 ### Setting Up a Day
 
-1. Create your solution files:
+Create your solution files:
    - `src/bin/p1.rs` for Part 1
    - `src/bin/p2.rs` for Part 2
-
-2. Build the release binaries:
-   ```bash
-   cd day<N>
-   cargo build --release
-   ```
 
 ### Running Benchmarks
 
@@ -35,6 +29,7 @@ For example:
 ```
 
 This will:
+- Build the release binaries
 - Run hyperfine benchmarks on both `p1` and `p2` binaries
 - Generate a `benchmarks.md` file in the day's directory with performance results
 - Use 15 warmup runs before measuring
@@ -60,11 +55,6 @@ Each day directory contains:
 ## 📊 Benchmarking
 
 The benchmarking script uses [hyperfine](https://github.com/sharkdp/hyperfine) to measure execution time. Results are saved as markdown tables in each day's `benchmarks.md` file.
-
-**Why `--release`?** The `--release` flag enables optimizations that can make Rust code run 10-100x faster than debug builds. Debug builds (`cargo build`) include:
-- No optimizations (faster compile time, slower runtime)
-- Debug symbols and assertions
-- Overflow checks
 
 ### Benchmark Results
 
