@@ -42,16 +42,16 @@ This will:
 advent_2025/
 ├── day1/          # Day 1 solution
 ├── day2/          # Day 2 solution
-├── day3/          # Day 3 solution
+├── ...
+├── day12/         # Day 12 solution
 ├── bench.sh       # Benchmarking script
-└── benchmarks.md  # Overall benchmark results
 ```
 
 Each day directory contains:
 - `src/bin/p1.rs` - Part 1 solution
 - `src/bin/p2.rs` - Part 2 solution
-- `input.txt` - Puzzle input (hidden)
-- `test.txt` - Test input (if applicable)
+- `input.txt` - Puzzle input (add your own)
+- `test.txt` - Test input (from example)
 - `benchmarks.md` - Performance benchmarks for that day
 
 ## 📊 Benchmarking
