@@ -1,30 +1,21 @@
-use std::fs::File;
-use std::io::{self,BufRead, BufReader};
+use std::fs;
 use std::cmp::max;
-use std::env;
 
-fn main() -> io::Result<()>{
+fn main() {
+    let contents = fs::read_to_string("input.txt").unwrap();
+    let lines: Vec<_> = contents.split('\n').collect();
+    let mut answer = 0;
 
-    let file_name = env::args().nth(1).unwrap();
-    let path = format!("{}.txt", file_name);
-    let file = File::open(path)?;
-    
-    let reader = BufReader::new(file);
-
-    let mut answer = 0; 
-
-    for line in reader.lines(){
-        answer += get_number(line?);
+    for line in lines {
+        answer += get_number(line);
     }
 
     println!("Answer: {answer}");
-
-    Ok(())
 }
 
-fn get_number(x: String) -> usize {
+fn get_number(x: &str) -> usize {
 
-    let mut answer = [0usize;12];
+    let mut answer = [0usize;2];
     let digits = x.chars().count() as i32;
 
     for (i, c) in x.chars().enumerate(){
@@ -33,9 +24,9 @@ fn get_number(x: String) -> usize {
 
         let digits_left  = digits - (i as i32); 
 
-        let mut start = max(0, 12-digits_left) as usize;
+        let mut start = max(0, 2-digits_left) as usize;
 
-        while start < 12{
+        while start < 2{
             if curr > answer[start]{
                 answer[start] = curr as usize;
                 for i in start+1 .. answer.len(){
@@ -51,7 +42,6 @@ fn get_number(x: String) -> usize {
     }
     let answer = answer.iter().fold(0usize,|acc,&d| acc * 10 + d);
 
-    println!("{answer}");
     return answer;
 
 }
