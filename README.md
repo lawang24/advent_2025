@@ -66,5 +66,16 @@ The benchmarking script uses [hyperfine](https://github.com/sharkdp/hyperfine) t
 - Debug symbols and assertions
 - Overflow checks
 
+### Benchmark Results
+
+```mermaid
+xychart-beta
+    title "Advent of Code 2025 - Benchmark Results"
+    x-axis "Day" [2, 4, 5, 6, 7, 8, 9, 10, 12]
+    y-axis "Time (ms)" 0 --> 70
+    bar "Part 1" [2.3, 1.3, 1.0, 1.2, 1.2, 15.1, 1.2, 17.6, 1.4]
+    bar "Part 2" [68.4, 2.6, 0.9, 1.1, 1.1, 15.2, 11.5, 9.3, 0]
+```
+
 
 
